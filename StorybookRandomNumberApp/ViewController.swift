@@ -18,36 +18,32 @@ class ViewController: UIViewController {
     @IBOutlet weak var numberLabelSeven: UILabel!
     
     
+    @IBOutlet var numberLabels: [UILabel]!
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        coordinator.animate { _ in
+            for labelValue in self.numberLabels {
+                updateRadius(lableValue: labelValue)
+            }
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let labelArray: [UILabel] = [
-            numberLabelOne,
-            numberLabelTwo,
-            numberLabelThree,
-            numberLabelFour,
-            numberLabelFive,
-            numberLabelSeven
-        ]
-        
-        for labelValue in labelArray {
+        for labelValue in self.numberLabels {
             updateRadius(lableValue: labelValue)
         }
         
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let numberArray = getRandumNumberArray(maxIndex: 6)
-        let labelArray: [UILabel] = [
-            numberLabelOne,
-            numberLabelTwo,
-            numberLabelThree,
-            numberLabelFour,
-            numberLabelFive,
-            numberLabelSeven
-        ]
         
-        for (index, labelValue) in labelArray.enumerated() {
+        for (index, labelValue) in self.numberLabels.enumerated() {
             setRandumNumber(lableValue: labelValue, numberValue: numberArray[index])
         }
     }

@@ -46,6 +46,6 @@ func getRandumNumberArray(maxIndex: Int) -> [Int] {
             arrayValue.append(number)
         }
     }
-    
-    return arrayValue.sorted()
+    arrayValue.sort()
+    return arrayValue
 }
