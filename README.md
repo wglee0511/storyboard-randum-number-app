@@ -1,2 +1,2 @@
-#  Storybook based randum number app
+#  Storyboard based randum number app
 
