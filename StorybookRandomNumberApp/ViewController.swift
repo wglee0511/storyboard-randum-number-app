@@ -17,15 +17,18 @@ class ViewController: UIViewController {
     @IBOutlet weak var numberLabelSix: UILabel!
     @IBOutlet weak var numberLabelSeven: UILabel!
     
-    func updateRadius(lableValue: UILabel!) {
-        lableValue.layer.cornerRadius = lableValue.bounds.width / 2
-        lableValue.clipsToBounds = true
-    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let labelArray: [UILabel] = [numberLabelOne, numberLabelTwo, numberLabelThree, numberLabelFour, numberLabelFive, numberLabelSeven]
+        let labelArray: [UILabel] = [
+            numberLabelOne,
+            numberLabelTwo,
+            numberLabelThree,
+            numberLabelFour,
+            numberLabelFive,
+            numberLabelSeven
+        ]
         
         for labelValue in labelArray {
             updateRadius(lableValue: labelValue)
@@ -34,7 +37,19 @@ class ViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        let numberArray = getRandumNumberArray(maxIndex: 6)
+        let labelArray: [UILabel] = [
+            numberLabelOne,
+            numberLabelTwo,
+            numberLabelThree,
+            numberLabelFour,
+            numberLabelFive,
+            numberLabelSeven
+        ]
+        
+        for (index, labelValue) in labelArray.enumerated() {
+            setRandumNumber(lableValue: labelValue, numberValue: numberArray[index])
+        }
     }
 
 
