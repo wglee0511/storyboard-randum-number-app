@@ -25,7 +25,7 @@ class ViewController: UIViewController {
         
         coordinator.animate { _ in
             for labelValue in self.numberLabels {
-                updateRadius(lableValue: labelValue)
+                labelValue.updateRadius()
             }
         }
     }
@@ -34,17 +34,16 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
         
         for labelValue in self.numberLabels {
-            updateRadius(lableValue: labelValue)
+            labelValue.updateRadius()
         }
         
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let numberArray = getRandumNumberArray(maxIndex: 6)
-        
+        let numberArray = Array<Int>.getRandumNumberArray(arrayNumber: numberLabels.count, range: 1...45)
         for (index, labelValue) in self.numberLabels.enumerated() {
-            setRandumNumber(lableValue: labelValue, numberValue: numberArray[index])
+            labelValue.setRandumNumber(numberValue: numberArray[index])
         }
     }
 
